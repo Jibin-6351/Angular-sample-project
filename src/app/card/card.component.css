@@ -1,0 +1,59 @@
+.card-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(26, 24, 30);
+  border-color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.card-sub {
+  display: flex;
+  gap: 8px;
+}
+.img {
+  height: 170px;
+  width: 170px;
+  border-radius: 10px;
+}
+h2 {
+  text-align: center;
+  margin: 0;
+  color: white;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+}
+.card-d {
+  width: 200px;
+}
+.controller {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.c-btn {
+  outline: none;
+  border: none;
+  padding: 7px;
+  background-color: rgb(175, 51, 51);
+  color: white;
+  width: 100px;
+  border-radius: 10px;
+}
+.c-de {
+  font-family: cursive;
+  color: white;
+}
+.c-r {
+  color: white;
+  font-family: fantasy;
+}
+.c-rv {
+  color: gold;
+}
+.container {
+  max-width: 400px;
+}

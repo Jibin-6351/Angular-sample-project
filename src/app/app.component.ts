@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -7,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { BookingComponent } from './booking/booking.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AboutComponent,
     BookingComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    CardComponent
 
   ],
   templateUrl: './app.component.html',

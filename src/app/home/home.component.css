@@ -1,3 +1,14 @@
-h2{
-    color: white;
+.home {
+  display: grid;
+  column-gap: 10px;
+  padding: 20px;
+  row-gap: 20px;
+  grid-template-columns: auto auto auto;
+}
+.home-movie {
+  color: white;
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  padding-top: 10px;
 }

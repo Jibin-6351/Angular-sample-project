@@ -1,1 +1,6 @@
-<h2>HomePage</h2>
+<h1 class="home-movie">Movies</h1>
+<div class="home">
+  <div *ngFor="let item of moviees">
+    <app-card [text]="item.moviename"></app-card>
+  </div>
+</div>
