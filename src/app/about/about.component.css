@@ -1,0 +1,22 @@
+p {
+  color: white;
+}
+.a-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 23px;
+}
+.text-f {
+  color: white;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.para-f {
+  width: 65%;
+}
+.p-f {
+  line-height: 22px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  opacity: 80%;
+}

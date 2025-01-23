@@ -1,0 +1,29 @@
+
+
+/* app-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} */
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the container stretches to fill the viewport */
+}
+
+router-outlet {
+  flex-grow: 1; /* Ensures the content area takes up remaining space */
+}
+
+
+
+
+

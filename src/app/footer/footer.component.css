@@ -1,0 +1,31 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background-color: #956643;
+}
+.f-text {
+  width: 60%;
+}
+.f-controller {
+  border: none;
+  outline: none;
+  padding: 12px;
+  border-radius: 5px;
+}
+.controller {
+  display: flex;
+  gap: 4px;
+}
+.p-f {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  color: white;
+  line-height: 18px;
+}
+.f-h {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+}
