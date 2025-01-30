@@ -15,7 +15,7 @@ h2 {
 .h-sub {
   display: flex;
   align-items: center;
-  gap: 20%;
+  gap: 15%;
 }
 .h-p {
   color: white;
@@ -53,3 +53,15 @@ h2 {
 .h-btn:hover {
   opacity: 80%;
 }
+/* .sort-header{
+ 
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: small;
+  padding: 5px;
+  border-radius: 10px;
+
+
+} */
+

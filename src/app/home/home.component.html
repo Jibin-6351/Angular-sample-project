@@ -1,6 +1,21 @@
-<h1 class="home-movie">Movies</h1>
+<div class="home-sort">
+  <h1 class="home-movie">Movies</h1>
+  <select name="" id="" class="sortbtn" (change)="changeValue($event)">
+    <option value="0">Sort</option>
+    <option value="1">Sort by Name</option>
+    <option value="2">Sort by Year</option>
+  </select>
+</div>
+
 <div class="home">
   <div *ngFor="let item of moviees">
-    <app-card [text]="item.moviename"></app-card>
+    <app-card
+      [title]="item.title"
+      [genre]="item.genre"
+      [rating]="item.rating"
+      [image]="item.path"
+      [description]="item.description"
+    >
+    </app-card>
   </div>
 </div>

@@ -2,27 +2,26 @@
   <div class="card-main">
     <div class="card-sub">
       <div class="img-div">
-        <img
-          src="https://th.bing.com/th/id/OIP.FU7mhTQD5Xt4V0wt8tEIJgAAAA?rs=1&pid=ImgDetMain"
-          alt=""
-          class="img"
-          srcset=""
-        />
+        <img src={{image}} class="img" alt="notfound">
       </div>
       <div class="details">
-        <h2>Cars</h2>
+        <h2>{{ title }}</h2>
         <div class="card-d">
           <p class="c-de">
-            Cars is a 2006 American animated sports comedy film produced by
-            Pixar Animation Studios
+            {{description}}
           </p>
         </div>
+        <span class="c-genre">Genre : {{ genre }}</span>
+        <div></div>
+
         <div class="controller">
           <div>
             <button class="c-btn">Watch ↻</button>
           </div>
           <div>
-            <p class="c-r">Rating : <span class="c-rv"> 5.6</span></p>
+            <p class="c-r">
+              Rating : <span class="c-rv"> {{ rating }}</span>
+            </p>
           </div>
         </div>
       </div>
