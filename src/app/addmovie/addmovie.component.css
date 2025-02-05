@@ -1,0 +1,98 @@
+h2 {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  margin: 0;
+  margin-top: 8px;
+}
+.sup-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.sup-sub {
+  display: flex;
+  gap: 10px;
+}
+.sub-sub2 {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.spcontroller {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+.sup-Main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: rgb(26, 24, 30);
+  padding: 50px;
+  border-radius: 20px;
+}
+.sup-subb {
+  padding: 25px;
+}
+#supbtn {
+  background-color: #956643;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+}
+#supbtn:hover {
+  opacity: 80%;
+}
+.label {
+  color: white;
+  font-size: smaller;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.img-upload {
+  display: flex;
+  gap: 10px;
+}
+.upload-btn {
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  width: 90px;
+}
+::placeholder {
+  color: white;
+}
+.upload-btn:hover {
+  opacity: 80%;
+}
+
+.rating {
+  display: flxe;
+}
+.checked {
+  color: orange;
+}
+.star {
+  display: flex;
+  gap: 10px;
+}
+.rating {
+  display: flex;
+  justify-content: space-around;
+}
+.fa {
+  font-size: larger;
+}
+.rating-text {
+  color: white;
+}
+.image-hidden{
+  display: flex;
+  justify-content: space-evenly;
+}
+

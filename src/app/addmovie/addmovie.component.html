@@ -1,0 +1,139 @@
+<div class="sup-main">
+  <h2>AddMovie</h2>
+  <div class="sup-subb">
+    <div class="sup-Main">
+      <form action="" [formGroup]="data" (ngSubmit)="onClick()">
+        <div class="sup-sub">
+          <input
+            type="text"
+            class="spcontroller"
+            placeholder="Name"
+            formControlName="title"
+          />
+          <input
+            type="text"
+            class="spcontroller"
+            placeholder="Director name"
+            formControlName="director"
+          />
+        </div>
+        <div class="sub-sub2">
+          <label class="label">Movie Release date :</label>
+          <input
+            type="date"
+            name=""
+            id=""
+            class="spcontroller"
+            formControlName="releaseDate"
+          />
+          <select class="spcontroller" formControlName="genre">
+            <option value="" style="background-color: black">
+              Select Genre
+            </option>
+            <option style="background-color: black" value="ACTION">
+              ACTION
+            </option>
+            <option value="COMEDY" style="background-color: black">
+              COMEDY
+            </option>
+            <option value="DRAMA" style="background-color: black">DRAMA</option>
+            <option value="HORROR" style="background-color: black">
+              HORROR
+            </option>
+            <option value="ROMANCE" style="background-color: black">
+              ROMANCE
+            </option>
+          </select>
+          <textarea
+            name=""
+            id=""
+            cols="3"
+            rows="3"
+            formControlName="description"
+            placeholder="Description"
+            style="
+              border-radius: 6px;
+              background: transparent;
+              border: 1px solid #956643;
+              color: white;
+              padding: 12px;
+            "
+          ></textarea>
+          <div class="rating">
+            <input
+              type="range"
+              name=""
+              min="1"
+              max="5"
+              value="0"
+              id=""
+              (change)="changeStar($event)"
+            />
+
+            <div class="star">
+              <p>
+                <span class="fa fa-star" [class.checked]="rating >= 1"></span>
+              </p>
+              <p>
+                <span class="fa fa-star" [class.checked]="rating >= 2"></span>
+              </p>
+              <p>
+                <span class="fa fa-star" [class.checked]="rating >= 3"></span>
+              </p>
+              <p>
+                <span class="fa fa-star" [class.checked]="rating >= 4"></span>
+              </p>
+              <p>
+                <span class="fa fa-star" [class.checked]="rating >= 5"></span>
+              </p>
+            </div>
+            <p class="rating-text">{{ rating }}.0</p>
+          </div>
+
+          <label class="label">Upload Movie image :</label>
+          <div class="img-upload">
+            <input
+              type="file"
+              name="file"
+              id="file"
+              class="spcontroller"
+              style="
+                background-color: white;
+                background: transparent;
+                border: 1px solid #956643;
+              "
+              (change)="image($event)"
+            />
+
+            <button type="button" class="upload-btn" (click)="onUpload()">
+              Upload
+            </button>
+          </div>
+          <div *ngIf="hideImage" class="image-hidden">
+            <img
+              id="imagePreview"
+              src=""
+              style="max-width: 100%; max-height: 200px; border-radius: 8px"
+            />
+            <i
+              class="fa fa-times"
+              style="color: red; text-align: right"
+              *ngIf="imgRemove"
+              (click)="iconClick()"
+            ></i>
+          </div>
+          <p style="color: green; margin: 0" *ngIf="isVisible">
+            File uploaded successfull
+          </p>
+          <input
+            type="submit"
+            value="Submit"
+            class="spcontroller"
+            style="border: none"
+            id="supbtn"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

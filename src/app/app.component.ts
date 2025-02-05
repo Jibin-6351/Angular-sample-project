@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -14,11 +15,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
-    AboutComponent,
-    BookingComponent,
-    SignInComponent,
-    SignUpComponent,
+    // HomeComponent,
+    // AboutComponent,
+    // BookingComponent,
+    // SignInComponent,
+    // SignUpComponent,
+    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

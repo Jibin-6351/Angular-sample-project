@@ -15,7 +15,7 @@ h2 {
 .h-sub {
   display: flex;
   align-items: center;
-  gap: 15%;
+  gap: 10%;
 }
 .h-p {
   color: white;
@@ -53,15 +53,14 @@ h2 {
 .h-btn:hover {
   opacity: 80%;
 }
-/* .sort-header{
- 
-  text-align: center;
-  border: none;
-  outline: none;
-  font-size: small;
-  padding: 5px;
-  border-radius: 10px;
-
-
-} */
-
+.material-symbols-outlined {
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 3px;
+}
+.material-symbols-outlined:hover {
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+}
