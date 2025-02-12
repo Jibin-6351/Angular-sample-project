@@ -1,21 +1,47 @@
-<div class="home-sort">
-  <h1 class="home-movie">Movies</h1>
+
+<div class="trending-main">
+  <h2 class="trending-h " ></h2>
   <select name="" id="" class="sortbtn" (change)="changeValue($event)">
     <option value="0">Sort</option>
     <option value="1">Sort by Name</option>
     <option value="2">Sort by Year</option>
   </select>
+
+</div>
+<div>
+  <h1 class="trend-h">Trending Movie</h1>
+  <div class="trending-movie">
+    <div *ngFor="let item of filterMovie">
+      <app-card
+        [id]="item.id"
+        [title]="item.title"
+        [genre]="item.genre"
+        [rating]="item.rating"
+        [image]="item.path"
+        [description]="item.description"
+        [views]="item.views"
+      >
+      </app-card>
+    </div>
+  </div>
 </div>
 
-<div class="home">
-  <div *ngFor="let item of moviees">
-    <app-card
-      [title]="item.title"
-      [genre]="item.genre"
-      [rating]="item.rating"
-      [image]="item.path"
-      [description]="item.description"
-    >
-    </app-card>
+
+
+<div>
+  <h1 class="trend-h">All Movie</h1>
+  <div class="home">
+    <div *ngFor="let item of moviees">
+      <app-card
+        [id]="item.id"
+        [title]="item.title"
+        [genre]="item.genre"
+        [rating]="item.rating"
+        [image]="item.path"
+        [description]="item.description"
+        [views]="item.views"
+      >
+      </app-card>
+    </div>
   </div>
 </div>

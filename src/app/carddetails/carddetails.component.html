@@ -1,0 +1,46 @@
+<div class="card-btn">
+    <button class="c-btn">Watch ↻</button>
+</div>
+<div class="movie-main">
+    <div class="movie-1">
+        <p class="card-p">{{ movie.title | uppercase}} [{{movie.releaseDate | date:'yyy'}}] </p>
+        <img src={{movie.file.path}} alt="" class="card-img">
+        <div style="display: flex; gap: 10px;">
+            <button class="like-btn" (click)="Like()">
+                <label class="icon-label">Like</label>
+                <i class="fa fa-thumbs-up" aria-hidden="true" id="like"></i>
+            </button>
+            <button class="dislike-btn" (click)="Dislike()">
+                <label class="icon-label">Dislike</label>
+                <i class="fa fa-thumbs-down" aria-hidden="true" id="dislike"></i>
+            </button>
+        </div>
+    </div>
+    <div class="movie-2">
+        <div>
+            <p class="card-des">{{movie.description}}</p>
+        </div>
+        <h3 class="card-genre">DIRECTOR : {{movie.director}}</h3>
+        <h3 class="card-genre">GENRE : {{movie.genre}}</h3>
+        <div class="card-all">
+            <div class="card-ic">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="card-value">
+                <span class="card-v">{{movie.views}}</span>
+                <span class="card-v">{{movie.likemovie}}</span>
+                <span class="card-v">{{movie.dislikemovie}}</span>
+                <span class="card-v">{{movie.rating}}</span>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+            <div style="display: flex; gap: 10px;">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span class="card-v">2h 23m</span>
+            </div>
+        </div>
+    </div>
+</div>

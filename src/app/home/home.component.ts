@@ -13,10 +13,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class HomeComponent {
   moviees: Movie[] = [];
+  filterMovie: Movie[] = [];
 
   value!: number;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   changeValue(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
@@ -25,8 +26,12 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.http.get<Movie[]>('http://localhost:8080/path').subscribe((data) => {
-      this.moviees = data;
+    this.http.get<Movie[]>('http://localhost:8080/movie/path').subscribe((data) => {
+      this.moviees = data
+
+      this.filterMovie = data.filter((value) => { return value.views > 14 })
+
+      console.log(this.moviees)
     });
   }
 

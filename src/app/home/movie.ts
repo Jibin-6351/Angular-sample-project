@@ -8,4 +8,5 @@ export interface Movie {
     title: string;
     genre: string;
     path: string;
+    views:number;
   }

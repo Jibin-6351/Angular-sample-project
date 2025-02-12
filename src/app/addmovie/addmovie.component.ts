@@ -64,6 +64,7 @@ export class AddmovieComponent {
         .subscribe(
           (res) => {
             this.responseData = res;
+            console.log(res)
             this.isVisible = true;
           },
           (err) => console.error(err)
