@@ -1,74 +1,69 @@
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Movie } from './movieDisplay';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { Carddetails } from './carddetails.service';
 
 @Component({
   selector: 'app-carddetails',
-  imports: [HttpClientModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './carddetails.component.html',
-  styleUrl: './carddetails.component.css'
+  styleUrl: './carddetails.component.css',
 })
 export class CarddetailsComponent {
-
-  id!: string | null
+  id!: string;
   movie: Movie = {} as Movie;
+  movieLike!: number;
+  movieDislike!: number;
 
-
-
-
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
-
-
-
-
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-
+  constructor(
+    private route: ActivatedRoute,
+    private cardDetails: Carddetails
+  ) {}
 
   Like() {
-
-
-
-    this.http.put(`http://localhost:8080/movie/like/${this.id}`, {}, { headers: new HttpHeaders().set('Content-Type', 'application/json') }).subscribe((res) => {
-      console.log(res)
-    })
-    const dislike = document.getElementsByClassName("dislike-btn")[0] as HTMLButtonElement;
-    dislike.style.pointerEvents = "none"
-    dislike.style.opacity = "60%"
-
-
+    this.cardDetails.likeMovie(this.id).subscribe((res) => {
+      this.movieLike = parseInt(res);
+      console.log(this.movieLike);
+    });
+    const dislike = document.getElementsByClassName(
+      'dislike-btn'
+    )[0] as HTMLButtonElement;
+    dislike.style.pointerEvents = 'none';
+    dislike.style.opacity = '60%';
+    const like = document.getElementsByClassName(
+      'like-btn'
+    )[0] as HTMLButtonElement;
+    like.disabled = true;
   }
 
   Dislike() {
+    this.cardDetails.disLikeMovie(this.id).subscribe((res) => {
+      this.movieDislike = parseInt(res);
+    });
 
-
-    this.http.put(`http://localhost:8080/movie/dislike/${this.id}`, {}, { headers: new HttpHeaders().set('Content-Type', 'application/json') }).subscribe((res) => {
-      console.log(res)
-    })
-
-    const like = document.getElementsByClassName("like-btn")[0] as HTMLButtonElement;
-    like.style.pointerEvents = "none"
-    like.style.opacity="60%"
+    const like = document.getElementsByClassName(
+      'like-btn'
+    )[0] as HTMLButtonElement;
+    like.style.pointerEvents = 'none';
+    like.style.opacity = '60%';
+    const dislike = document.getElementsByClassName(
+      'dislike-btn'
+    )[0] as HTMLButtonElement;
+    dislike.disabled = true;
   }
-
-
 
   ngOnInit() {
-
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get<Movie>(`http://localhost:8080/movie/${this.id}`).subscribe((data) => {
-      this.movie = data
-      console.log(this.movie)
-
-
-
-    })
-
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.cardDetails.getData(this.id).subscribe((data) => {
+      this.movie = data;
+      this.movieLike = data.likemovie;
+      this.movieDislike = data.dislikemovie;
+    });
   }
 
-
-
+  play() {
+    const url = this.movie.movie_trailer;
+    window.open(url);
+  }
 }

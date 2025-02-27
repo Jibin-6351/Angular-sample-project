@@ -1,0 +1,18 @@
+<input
+  id="typeahead-format"
+  type="text"
+  class="form-control"
+  [(ngModel)]="model"
+  [ngbTypeahead]="search"
+  [resultFormatter]="formatter"
+  placeholder="Search"
+  (ngModelChange)="onModelChange($event)"
+  [resultTemplate]="resultTemplate"
+  [inputFormatter]="formatter"
+/>
+
+<ng-template #resultTemplate let-result="result">
+  <div class="custom-suggestion">
+    {{ result }}
+  </div>
+</ng-template>

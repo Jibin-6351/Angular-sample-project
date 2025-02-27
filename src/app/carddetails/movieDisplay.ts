@@ -15,6 +15,7 @@ export interface Movie{
     likemovie:number;
     dislikemovie:number;
    file:File
+   movie_trailer:string
 }
 
 

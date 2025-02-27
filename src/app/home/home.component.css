@@ -62,10 +62,12 @@
 }
 
 .trending-main {
-  background-color: #1b1d1b;
+  
+  background-color: #262926;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+ justify-content: space-around;
+  padding: 30px;
+  gap: 20px;
 }
 
 .trend-h {
@@ -75,6 +77,7 @@
   margin: 0;
   padding-top: 18px;
   text-align: center;
+  padding-left: 20px;
 
 }
 
@@ -87,5 +90,19 @@
   grid-template-columns: auto auto auto auto auto;
   overflow: auto;
   scrollbar-width: none;
+      
 
 }
+.filter{
+padding: 6px;
+border-radius: 10px;
+width:300px;
+outline: none;
+background: transparent;
+border: 1px solod #956643;
+border: none;
+color: white;
+border: 1px solid white;
+}
+
+

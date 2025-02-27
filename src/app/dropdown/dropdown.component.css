@@ -1,0 +1,17 @@
+.container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+    gap: 10px;
+}
+.btn{
+   padding: 8px;
+   background-color: rgb(86, 86, 194);
+   color :white;
+}
+.range{
+    display: flex; 
+    gap: 10px;
+}

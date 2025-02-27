@@ -1,5 +1,5 @@
 header {
-  padding: 3px;
+  padding: 28px;
   background-color: #956643;
 }
 h2 {
@@ -10,12 +10,12 @@ h2 {
 .h-main {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .h-sub {
   display: flex;
   align-items: center;
-  gap: 10%;
+  gap: 20px;
 }
 .h-p {
   color: white;
@@ -62,5 +62,21 @@ h2 {
 .material-symbols-outlined:hover {
   background-color: white;
   color: black;
+  border-radius: 10px;
+}
+
+.search {
+  background-color: #785133;
+  color: white;
   border-radius: 8px;
+}
+.filter-btn {
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  padding: 3px;
+  width: 80px;
+}
+.h-div {
+  width: 350px;
 }

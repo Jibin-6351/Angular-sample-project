@@ -2,22 +2,35 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { Movie } from './movie';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HomeService } from './home.service';
+import { DatashareService } from '../datashare.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, CommonModule, HttpClientModule],
+  imports: [CardComponent, CommonModule,ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   moviees: Movie[] = [];
   filterMovie: Movie[] = [];
-
+  filterbyYear:any
   value!: number;
+  filter!: boolean;
 
-  constructor(private http: HttpClient) { }
+
+date1=new FormControl("");
+date2=new FormControl("");
+
+  constructor(
+    private homeService: HomeService,
+    private dataShare: DatashareService,
+    private router: Router
+  ) {}
 
   changeValue(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
@@ -26,15 +39,16 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.http.get<Movie[]>('http://localhost:8080/movie/path').subscribe((data) => {
-      this.moviees = data
-
-      this.filterMovie = data.filter((value) => { return value.views > 14 })
-
-      console.log(this.moviees)
+    this.homeService.getData().subscribe((data) => {
+      this.moviees = data;
+      this.filterMovie = data.filter((value) => {
+        return value.views > 14;
+      });
+    });
+    this.dataShare.btnValue$.subscribe((currentValue) => {
+      this.filter = currentValue;
     });
   }
-
   sortMovies() {
     switch (this.value) {
       case 1:
@@ -49,4 +63,24 @@ export class HomeComponent {
         break;
     }
   }
+
+  find(event:Event){
+    const value=(event.target as HTMLInputElement).value
+    console.log(value)
+
+  }
+  findData(){
+
+   this.homeService.getMovieRelease(this.date1.value !,this.date2.value !).subscribe((data)=>{
+    this.filterbyYear=data
+    console.log(this.filterbyYear.length)
+   })
+
+  }
+
+  filterId(id:string){
+    this.router.navigate(['/movies', id]);
+    
+  }
+  
 }

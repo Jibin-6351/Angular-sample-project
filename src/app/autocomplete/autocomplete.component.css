@@ -1,0 +1,22 @@
+.form-control {
+  background-color: #956643;
+  width: 300px;
+  color: white;
+}
+
+.form-control::placeholder {
+  color: white;
+}
+
+.custom-suggestion {
+  width: 265px;
+  padding: 3px;
+}
+
+.ngb-typeahead {
+  display: block;
+}
+
+.ngb-typeahead .dropdown-menu {
+  width: 300px;
+}

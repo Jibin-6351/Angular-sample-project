@@ -1,15 +1,79 @@
-
+@if(filter){
 <div class="trending-main">
-  <h2 class="trending-h " ></h2>
-  <select name="" id="" class="sortbtn" (change)="changeValue($event)">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; flex-direction: column">
+      <label style="color: white">Starting Date:</label>
+      <input type="date" name="" id="" class="filter" [formControl]="date1" />
+    </div>
+    <div style="display: flex; flex-direction: column">
+      <label style="color: white">Ending Date:</label>
+      <input type="date" name="" id="" class="filter" [formControl]="date2" />
+    </div>
+    <button
+      style="outline: none; border: none; padding: 4px; border-radius: 10px"
+      (click)="findData()"
+    >
+      Filter
+    </button>
+  </div>
+  
+  <div
+    style="
+      color: white;
+      display: flex;
+      gap: 10px;
+      height: 180px;
+      overflow-x: scroll;
+      width: 800px;
+      padding-bottom: 20px;
+      scrollbar-width: none;
+    "
+  >
+  @if(filterbyYear.length==0){
+<p style="color: red; text-align: center;">No Filim found</p>
+
+  }
+  @else{
+
+    @for(item of filterbyYear; track item.id ){
+    <div style="display: flex; border-radius: 20px; gap: 10px">
+      <img
+        [src]="item.file.path"
+        alt=""
+        srcset=""
+        style="
+          height: 150px;
+          width: 100px;
+          object-fit: cover;
+          border-radius: 10px;
+        "
+        (click)="filterId(item.id)"
+      />
+    </div>
+    }
+  }
+  
+
+  
+  </div>
+
+  <select
+    name=""
+    id=""
+    class="sortbtn"
+    (change)="changeValue($event)"
+    style="display: none"
+  >
     <option value="0">Sort</option>
     <option value="1">Sort by Name</option>
     <option value="2">Sort by Year</option>
   </select>
-
 </div>
+
+}
+
 <div>
-  <h1 class="trend-h">Trending Movie</h1>
+  <h2 class="trend-h">Trending Movie</h2>
   <div class="trending-movie">
     <div *ngFor="let item of filterMovie">
       <app-card
@@ -25,11 +89,8 @@
     </div>
   </div>
 </div>
-
-
-
 <div>
-  <h1 class="trend-h">All Movie</h1>
+  <h2 class="trend-h">All Movie</h2>
   <div class="home">
     <div *ngFor="let item of moviees">
       <app-card
