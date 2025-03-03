@@ -3,7 +3,7 @@ interface File{
     name:string;
     path:string;
 }
-export interface Movie{
+export interface MovieDisplay{
     id: number;
     title: string;
     director: string;

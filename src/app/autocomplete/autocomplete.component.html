@@ -1,18 +1,35 @@
-<input
-  id="typeahead-format"
-  type="text"
-  class="form-control"
-  [(ngModel)]="model"
-  [ngbTypeahead]="search"
-  [resultFormatter]="formatter"
-  placeholder="Search"
-  (ngModelChange)="onModelChange($event)"
-  [resultTemplate]="resultTemplate"
-  [inputFormatter]="formatter"
-/>
 
-<ng-template #resultTemplate let-result="result">
+
+
+<ng-template #rt let-r="result" let-t="term">
   <div class="custom-suggestion">
-    {{ result }}
+
+    <img [src]="r['path']" class="me-1" style="width: 80px; height: 50px; border-radius: 8px;"  />
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
   </div>
 </ng-template>
+
+<div class="mb-3 row">
+  <div class="col">
+    <div class="input-group" >
+      <input
+        id="typeahead-template"
+        type="text"
+        class="form-control"
+        [(ngModel)]="model"
+        [ngbTypeahead]="search"
+        [resultTemplate]="rt"
+        [inputFormatter]="formatter"
+        (ngModelChange)="onModelChange($event)"
+        placeholder="Search"
+      
+      />
+      <div class="input-group-text" style="cursor: pointer;"(click)="change()">
+        <i class="fa fa-filter" aria-hidden="true" ></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

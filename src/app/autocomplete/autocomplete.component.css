@@ -20,3 +20,8 @@
 .ngb-typeahead .dropdown-menu {
   width: 300px;
 }
+
+input:focus,
+.form-control:focus {
+  box-shadow: none !important;
+}

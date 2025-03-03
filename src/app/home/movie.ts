@@ -7,7 +7,7 @@ export interface Movie {
   director: string;
   title: string;
   genre: string;
-  path: string;
+  path : string;
   views: number;
   movie_trailer:string
 }

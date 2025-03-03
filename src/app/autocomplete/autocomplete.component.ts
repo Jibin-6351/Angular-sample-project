@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { HomeService } from '../home/home.service';
 import { Router } from '@angular/router';
+import { DatashareService } from '../datashare.service';
 
 @Component({
   selector: 'app-autocomplete',
@@ -13,43 +14,59 @@ import { Router } from '@angular/router';
   styleUrl: './autocomplete.component.css',
 })
 export class AutocompleteComponent {
-  constructor(private homeService: HomeService, private router: Router) {}
+  constructor(
+    private homeService: HomeService,
+    private router: Router,
+    private dataShare: DatashareService
+  ) {}
+
+  allMovie!: any[];
+  names: any;
+  model!: any;
+  buttonChange: boolean = true;
 
   ngOnInit() {
     this.homeService.getData().subscribe((data) => {
-      this.allMovie = data;
-      this.names = data.map((val) => {
-        return val.title;
+      this.names = data.map((data) => {
+        return { id: data.id, name: data.title, path: data.path };
       });
+      this.allMovie = data;
     });
   }
-  allMovie!: any[];
-  names: any;
-  model!:any
 
-  formatter = (result: string) => result.toUpperCase();
+  onModelChange(newValue: any): void {
+    const id = this.allMovie.find((movie) => movie.id == newValue.id);
+    console.log(id);
+      this.router.navigate(['/movies', id.id]);
+   
+  }
 
-  search: OperatorFunction<string, readonly string[]> = (
+  search: OperatorFunction<string, readonly { name: any; flag: any }[]> = (
     text$: Observable<string>
   ) =>
     text$.pipe(
       debounceTime(200),
-      distinctUntilChanged(),
       map((term) =>
         term === ''
           ? []
           : this.names
               .filter(
-                (v: string) => v.toLowerCase().indexOf(term.toLowerCase()) > -1
+                (v: { name: string }) =>
+                  v.name.toLowerCase().indexOf(term.toLowerCase()) > -1
               )
               .slice(0, 10)
       )
     );
 
-  onModelChange(newValue: string): void {
-    const id = this.allMovie.find((movie) => movie.title==newValue);
-    if(id){
-      this.router.navigate(['/movies', id.id]);
+  formatter = (x: { name: string }) => x.name;
+
+  change() {
+    if (this.buttonChange) {
+      this.dataShare.changeValue(true);
+      this.buttonChange = false;
+    } else {
+      this.dataShare.changeValue(false);
+      this.buttonChange = true;
     }
   }
 }

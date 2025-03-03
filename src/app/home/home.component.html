@@ -1,62 +1,36 @@
 @if(filter){
 <div class="trending-main">
-  <div style="display: flex; flex-direction: column; gap: 10px">
-    <div style="display: flex; flex-direction: column">
-      <label style="color: white">Starting Date:</label>
-      <input type="date" name="" id="" class="filter" [formControl]="date1" />
+  <div style="display: flex;  gap: 10px; align-items: flex-end;">
+    <div style="display: flex;align-items: center; gap: 10px; flex-direction: column;">
+      <label style="color: white">From Date</label>
+      <div style="display: flex ;gap:8px; cursor: pointer;align-items: center;border: 1px solid white;width: 230px; border-radius: 10px;">
+        <input type="date" name="date1" id="" class="filter" [formControl]="date1" style="border: none;" />
+        <i class="fa fa-times" aria-hidden="true" style="color: red; text-align: right;" (click)="cancelD1()" ></i>
+      </div>
+
     </div>
-    <div style="display: flex; flex-direction: column">
-      <label style="color: white">Ending Date:</label>
-      <input type="date" name="" id="" class="filter" [formControl]="date2" />
+    <div style="display: flex; align-items: center; gap: 10px;flex-direction: column;">
+      <label style="color: white">To Date</label>
+      <div style="display: flex ;align-items: center; gap:5px; cursor: pointer; border: 1px solid white;width: 230px; border-radius: 10px;">
+        <input type="date" name="date2" id="" class="filter" [formControl]="date2" style="border: none;" />
+        <i class="fa fa-times" aria-hidden="true" style="color: red; text-align: right;" (click)="cancelD2()"  ></i>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;flex-direction: column;">
+      <select name="" id="" class="filter" style="padding: 7px;" id="genre">
+        <option value="" style="background-color: black;">Select Genre</option>
+        <option value="COMEDY" style="background-color: black;">COMEDY</option>
+        <option value="ACTION" style="background-color: black;">ACTION</option>
+        <option value="DRAMA" style="background-color: black;">DRAMA</option>
+      </select>
     </div>
     <button
-      style="outline: none; border: none; padding: 4px; border-radius: 10px"
+      style="outline: none; border: none; padding: 4px; border-radius: 10px; width:100px; "
       (click)="findData()"
     >
       Filter
     </button>
   </div>
-  
-  <div
-    style="
-      color: white;
-      display: flex;
-      gap: 10px;
-      height: 180px;
-      overflow-x: scroll;
-      width: 800px;
-      padding-bottom: 20px;
-      scrollbar-width: none;
-    "
-  >
-  @if(filterbyYear.length==0){
-<p style="color: red; text-align: center;">No Filim found</p>
-
-  }
-  @else{
-
-    @for(item of filterbyYear; track item.id ){
-    <div style="display: flex; border-radius: 20px; gap: 10px">
-      <img
-        [src]="item.file.path"
-        alt=""
-        srcset=""
-        style="
-          height: 150px;
-          width: 100px;
-          object-fit: cover;
-          border-radius: 10px;
-        "
-        (click)="filterId(item.id)"
-      />
-    </div>
-    }
-  }
-  
-
-  
-  </div>
-
   <select
     name=""
     id=""
@@ -73,20 +47,39 @@
 }
 
 <div>
-  <h2 class="trend-h">Trending Movie</h2>
+
+<h2 class="trend-h">{{filterbyYear.length==0 ? "Trending Movie":"" }}</h2>
   <div class="trending-movie">
-    <div *ngFor="let item of filterMovie">
-      <app-card
-        [id]="item.id"
-        [title]="item.title"
-        [genre]="item.genre"
-        [rating]="item.rating"
-        [image]="item.path"
-        [description]="item.description"
-        [views]="item.views"
-      >
-      </app-card>
-    </div>
+    @if(filterbyYear.length!==0){
+      <div *ngFor="let item of filterbyYear">
+        <app-card
+          [id]="item.id"
+          [title]="item.title"
+          [genre]="item.genre"
+          [rating]="item.rating"
+          [image]="item?.file?.path  || item?.path"
+          [description]="item.description"
+          [views]="item.views"
+        >
+        </app-card>
+      </div>
+    }
+    @else{
+    
+      <div *ngFor="let item of filterMovie">
+        <app-card
+          [id]="item.id"
+          [title]="item.title"
+          [genre]="item.genre"
+          [rating]="item.rating"
+          [image]="item.path"
+          [description]="item.description"
+          [views]="item.views"
+        >
+        </app-card>
+      </div>
+    }
+  
   </div>
 </div>
 <div>

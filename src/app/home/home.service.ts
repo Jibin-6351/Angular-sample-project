@@ -17,4 +17,7 @@ export class HomeService {
   getMovieRelease(date1:string,date2:string):Observable<Movie[]>{
     return this.http.get<Movie[]>(`${this.apiUrl}/release?date1=${encodeURIComponent(date1)}&date2=${encodeURIComponent(date2)}`)
   }
+  getMovieReleaseDate(date1:string):Observable<Movie[]>{
+    return this.http.get<Movie[]>(`${this.apiUrl}/byreleasedate/${date1}`)
+  }
 }

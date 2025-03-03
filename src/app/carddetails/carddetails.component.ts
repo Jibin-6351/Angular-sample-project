@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Movie } from './movieDisplay';
+import { MovieDisplay } from './movieDisplay';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Carddetails } from './carddetails.service';
@@ -12,7 +12,7 @@ import { Carddetails } from './carddetails.service';
 })
 export class CarddetailsComponent {
   id!: string;
-  movie: Movie = {} as Movie;
+  movie: MovieDisplay = {} as MovieDisplay;
   movieLike!: number;
   movieDislike!: number;
 

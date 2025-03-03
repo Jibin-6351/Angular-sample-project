@@ -96,13 +96,20 @@
 .filter{
 padding: 6px;
 border-radius: 10px;
-width:300px;
+width:200px;
 outline: none;
 background: transparent;
 border: 1px solod #956643;
 border: none;
 color: white;
 border: 1px solid white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: white;
+  border-radius: 50%; 
+  color: white;
+  padding: 3px;
 }
 
 
