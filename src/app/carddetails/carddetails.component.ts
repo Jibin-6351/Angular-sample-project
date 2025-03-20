@@ -63,7 +63,6 @@ export class CarddetailsComponent {
   }
 
   play() {
-    const url = this.movie.movie_trailer;
-    window.open(url);
+    window.open("https://www.google.com/");
   }
 }

@@ -1,10 +1,10 @@
 .home {
   display: grid;
   column-gap: 10px;
-  padding: 20px;
+  padding: 15px;
   row-gap: 20px;
   place-items: center;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto ;
 }
 
 .home-movie {
@@ -75,7 +75,6 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-style: italic;
   margin: 0;
-  padding-top: 18px;
   text-align: center;
   padding-left: 20px;
 
@@ -87,7 +86,7 @@
   padding: 20px;
   row-gap: 20px;
   place-items: center;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto ;
   overflow: auto;
   scrollbar-width: none;
       

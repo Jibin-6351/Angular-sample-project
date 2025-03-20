@@ -18,10 +18,12 @@ import { Movie } from './movie';
 })
 export class HomeComponent {
   moviees: Movie[] = [];
-  filterMovie: Movie[] = [];
+  filterMovie: any;
   filterbyYear:any[]=[];
   value!: number;
   filter!: boolean;
+  allgenre: string[] = [];
+  movieData:any;
 
 
 date1=new FormControl("");
@@ -38,12 +40,11 @@ date2=new FormControl("");
     this.value = parseInt(selectedValue);
     this.sortMovies();
   }
-
   ngOnInit() {
     this.homeService.getData().subscribe((data) => {
-      this.moviees = data;
+      this.movieData=data
       this.filterMovie = data.filter((value) => {
-        return value.views > 14;
+        return value.rating > 8.8;
       });
     });
     this.dataShare.btnValue$.subscribe((currentValue) => {
@@ -70,14 +71,10 @@ date2=new FormControl("");
 
   }
   findData(){
-
-
     const value=(document.getElementById("genre") as HTMLInputElement).value
-
-
     if(this.date1.value&& this.date2.value&&value){
       this.homeService.getMovieRelease(this.date1.value !,this.date2.value !).subscribe((data)=>{
-        this.filterbyYear=data.filter((item)=>item.genre==value)
+      this.filterbyYear=data.filter((item)=>item.genre.includes(value))
         
        })
 
@@ -87,8 +84,17 @@ date2=new FormControl("");
         console.log(data)
     })
   }else if(value){
-    this.filterbyYear=this.moviees.filter((data)=>data.genre===value)
-    console.log(this.filterbyYear)
+
+  
+
+this.filterbyYear=this.movieData.filter((data:any)=>{
+  return data.genre.includes(value)
+})
+
+  console.log(this.filterbyYear);
+
+
+
   }else if(this.date1.value){
     const currentDate = new Date();
     const day = currentDate.getDate().toString().padStart(2, '0'); 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, OperatorFunction } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { HomeService } from '../home/home.service';
 import { Router } from '@angular/router';
@@ -24,12 +24,18 @@ export class AutocompleteComponent {
   names: any;
   model!: any;
   buttonChange: boolean = true;
+  autoComplete: any = [];
 
   ngOnInit() {
     this.homeService.getData().subscribe((data) => {
-      this.names = data.map((data) => {
-        return { id: data.id, name: data.title, path: data.path };
-      });
+      this.autoComplete = data;
+
+      this.names = this.autoComplete.map(
+        (data: { id: any; title: any; file: { path: any } }) => {
+          return { id: data.id, name: data.title, path: data.file.path };
+        }
+      );
+
       this.allMovie = data;
     });
   }
@@ -37,8 +43,7 @@ export class AutocompleteComponent {
   onModelChange(newValue: any): void {
     const id = this.allMovie.find((movie) => movie.id == newValue.id);
     console.log(id);
-      this.router.navigate(['/movies', id.id]);
-   
+    this.router.navigate(['/movies', id.id]);
   }
 
   search: OperatorFunction<string, readonly { name: any; flag: any }[]> = (

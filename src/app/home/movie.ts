@@ -1,13 +1,14 @@
 
 export interface Movie {
+  series_title: any;
   id: number;
-  rating: string;
+  rating: number;
   releaseDate: string;
   description: string;
   director: string;
   title: string;
   genre: string;
   path : string;
-  views: number;
+  views: string;
   movie_trailer:string
 }

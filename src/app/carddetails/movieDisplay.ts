@@ -1,6 +1,5 @@
 interface File{
     id:number;
-    name:string;
     path:string;
 }
 export interface MovieDisplay{
@@ -16,6 +15,7 @@ export interface MovieDisplay{
     dislikemovie:number;
    file:File
    movie_trailer:string
+   duration:string
 }
 
 

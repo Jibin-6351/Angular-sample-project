@@ -6,20 +6,18 @@
   border-color: white;
   border-radius: 10px;
   transition: all 0.8s;
-  width: 410px;
+  width: 420px;
+  
 }
 
 .card-sub {
   display: flex;
   gap: 8px;
   align-items: center;
+  
 }
 
-.img {
-  height: 245px;
-  width: 200px;
-  border-radius: 10px;
-}
+
 
 h4 {
   text-align: center;
@@ -76,7 +74,7 @@ h4 {
 
 .card-main:hover {
   transform: scale(1.1);
-  box-shadow: 0px 0px 14px rgb(83, 83, 167);
+  box-shadow: 0px 0px 10px #ffffff;
 }
 .img {
   object-fit: cover;

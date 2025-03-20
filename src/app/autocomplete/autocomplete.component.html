@@ -4,7 +4,7 @@
 <ng-template #rt let-r="result" let-t="term">
   <div class="custom-suggestion">
 
-    <img [src]="r['path']" class="me-1" style="width: 80px; height: 50px; border-radius: 8px;"  />
+    <img [src]="r['path']" class="me-1" style="height: 50px; border-radius: 8px;"  />
     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
   </div>
 </ng-template>

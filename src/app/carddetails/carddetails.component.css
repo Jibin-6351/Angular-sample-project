@@ -7,7 +7,7 @@
 
 .movie-main {
   display: flex;
-  padding: 60px;
+  padding: 28px;
 }
 
 .movie-1 {
@@ -28,9 +28,9 @@
 }
 
 .card-img {
-  width: 500px;
-  height: 300px;
-  border-radius: 10px;
+  width: 200px;
+  height: 290px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -54,7 +54,7 @@
 .card-genre {
   color: white;
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: monospace;
   text-align: left;
 }
 

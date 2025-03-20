@@ -13,7 +13,10 @@
         style="color: white; font-size: 20px"
       ></i>
     </div>
-    <img [src]="movie.file.path" alt="" class="card-img" />
+    <div style="height:300px ; width:500px ;display: flex; justify-content: center;background-color: #3a3735; border-radius: 20px; align-items: center;">
+      <img [src]="movie.file.path" alt="" class="card-img" />
+
+    </div>
     <div style="display: flex; gap: 10px">
       <button class="like-btn" (click)="Like()">
         <i class="fa fa-thumbs-up" aria-hidden="true" id="like"></i>
@@ -48,7 +51,7 @@
     <div style="display: flex; justify-content: flex-end">
       <div style="display: flex; gap: 10px">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        <span class="card-v">2h 23m</span>
+        <span class="card-v">{{movie.duration}}</span>
       </div>
     </div>
   </div>

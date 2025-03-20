@@ -11,6 +11,7 @@
 .custom-suggestion {
   width: 265px;
   padding: 3px;
+  
 }
 
 .ngb-typeahead {
@@ -18,7 +19,8 @@
 }
 
 .ngb-typeahead .dropdown-menu {
-  width: 300px;
+  width: 300px; 
+ 
 }
 
 input:focus,

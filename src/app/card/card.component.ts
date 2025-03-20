@@ -10,14 +10,22 @@ import { MovieService } from './card.service';
 })
 export class CardComponent {
   constructor(private router: Router, private movieService: MovieService) {}
-
+  
   @Input() id!: number;
-  @Input() title: string = '';
-  @Input() genre: string = '';
-  @Input() rating: string = '';
-  @Input() image: string = '';
-  @Input() description: string = '';
-  @Input() views!: number;
+  @Input() director="";
+  @Input() dislikemovie=""
+  @Input() movieImage="";
+  @Input() likemovie="";
+  @Input() movie_trailer="";
+  @Input() releaseDate="";
+  @Input() title="";
+  @Input() description="";
+  @Input() views="";
+  @Input() rating="";
+  @Input() genre="";
+  @Input() duration=""
+
+
 
   navigate() {
     this.movieService.updateViews(this.id).subscribe(() => {
