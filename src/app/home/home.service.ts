@@ -20,4 +20,7 @@ export class HomeService {
   getMovieReleaseDate(date1:string):Observable<Movie[]>{
     return this.http.get<Movie[]>(`${this.apiUrl}/byreleasedate/${date1}`)
   }
+  getMovieByPage(size:number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/moviebypage?size=${encodeURIComponent(size)}`)
+  }
 }

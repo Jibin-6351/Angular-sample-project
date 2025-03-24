@@ -1,10 +1,10 @@
 .home {
   display: grid;
-  column-gap: 10px;
-  padding: 15px;
-  row-gap: 20px;
-  place-items: center;
-  grid-template-columns: auto auto auto ;
+  /* column-gap: 2px; */
+  /* padding: 2px; */
+  row-gap: 40px;
+  /* place-items: center; */
+  grid-template-columns: auto auto auto;
 }
 
 .home-movie {
@@ -46,13 +46,11 @@
 }
 
 .sortbtn {
-
   padding: 6px;
   border-radius: 10px;
   text-align: center;
   border: none;
   outline: none;
-
 }
 
 .trending-h {
@@ -62,53 +60,74 @@
 }
 
 .trending-main {
-  
   background-color: #262926;
   display: flex;
- justify-content: space-around;
+  justify-content: space-around;
   padding: 30px;
   gap: 20px;
 }
 
 .trend-h {
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   margin: 0;
   text-align: center;
   padding-left: 20px;
-
 }
 
 .trending-movie {
   display: grid;
-  column-gap: 30px;
+  column-gap: 40px;
   padding: 20px;
-  row-gap: 20px;
+  row-gap: 35px;
   place-items: center;
-  grid-template-columns: auto auto auto auto ;
+  grid-template-columns: auto auto auto auto auto;
   overflow: auto;
   scrollbar-width: none;
-      
-
 }
-.filter{
-padding: 6px;
-border-radius: 10px;
-width:200px;
-outline: none;
-background: transparent;
-border: 1px solod #956643;
-border: none;
-color: white;
-border: 1px solid white;
+.filter {
+  padding: 6px;
+  border-radius: 10px;
+  width: 200px;
+  outline: none;
+  background: transparent;
+  border: 1px solod #956643;
+  border: none;
+  color: white;
+  border: 1px solid white;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: white;
-  border-radius: 50%; 
+  border-radius: 50%;
   color: white;
   padding: 3px;
 }
 
-
+.next {
+  width: 120px;
+  position: relative;
+  left: 80%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  outline: none;
+  border: none;
+  padding: 6px;
+  border-radius: 12px;
+}
+.loadmore:hover {
+  opacity: 80%;
+}
+.prev {
+  width: 120px;
+  position: relative;
+  left: 5%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  outline: none;
+  border: none;
+  padding: 6px;
+  border-radius: 12px;
+  visibility: hidden;
+}
