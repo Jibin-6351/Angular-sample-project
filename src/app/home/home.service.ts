@@ -14,13 +14,16 @@ export class HomeService {
   getData(): Observable<Movie[]> {
     return this.http.get<Movie[]>(`${this.apiUrl}`); 
   }
-  getMovieRelease(date1:string,date2:string):Observable<Movie[]>{
-    return this.http.get<Movie[]>(`${this.apiUrl}/release?date1=${encodeURIComponent(date1)}&date2=${encodeURIComponent(date2)}`)
-  }
-  getMovieReleaseDate(date1:string):Observable<Movie[]>{
-    return this.http.get<Movie[]>(`${this.apiUrl}/byreleasedate/${date1}`)
+  getMovieRelease(date1:string,date2:string,size:number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/release?date1=${encodeURIComponent(date1)}&date2=${encodeURIComponent(date2)}&size=${encodeURIComponent(size)}`)
   }
   getMovieByPage(size:number):Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/moviebypage?size=${encodeURIComponent(size)}`)
+  }
+  filterByGenre(genre:string,size:number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/moviebygenre?genre=${encodeURIComponent(genre)}&size=${encodeURIComponent(size)}`)
+  }
+  getMovieByReleaseDateAndGenre(date1:string,date2:string,genre:string,size:number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/moviebyreleasedategenre?date1=${encodeURIComponent(date1)}&date2=${date2}&genre=${genre}&size=${size}`)
   }
 }

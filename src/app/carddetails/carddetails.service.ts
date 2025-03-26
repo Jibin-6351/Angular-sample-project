@@ -17,7 +17,7 @@ export class Carddetails {
   likeMovie(id: string): Observable<string> {
     return this.http.put<string>(`${this.apiUrl}/like/${id}`, {});
   }
-  disLikeMovie(id:string):Observable<string>{
-    return this.http.put<string>(`${this.apiUrl}/dislike/${id}`, {})
+  disLikeMovie(id: string): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/dislike/${id}`, {});
   }
 }

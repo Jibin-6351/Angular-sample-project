@@ -1,10 +1,8 @@
 .home {
   display: grid;
-  /* column-gap: 2px; */
-  /* padding: 2px; */
   row-gap: 40px;
-  /* place-items: center; */
   grid-template-columns: auto auto auto;
+  padding-bottom: 30px;
 }
 
 .home-movie {

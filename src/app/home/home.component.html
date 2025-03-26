@@ -83,8 +83,8 @@
     >
       <select name="" id="" class="filter" style="padding: 7px" id="genre">
         <option value="" style="background-color: black">Select Genre</option>
-        <option value="COMEDY" style="background-color: black">ACTION</option>
-        <option value="ACTION" style="background-color: black">COMEDY</option>
+        <option value="COMEDY" style="background-color: black">COMEDY</option>
+        <option value="ACTION" style="background-color: black">ACTION</option>
         <option value="FICTION" style="background-color: black">FICTION</option>
         <option value="HORROR" style="background-color: black">HORROR</option>
         <option value="DRAMA" style="background-color: black">DRAMA</option>
@@ -143,53 +143,10 @@
 
 }
 
-<div class="home">
-  <div *ngFor="let item of filterbyYear">
-    <app-card
-      [id]="item.id"
-      [director]="item.director"
-      [dislikemovie]="item.dislikemovie"
-      [movieImage]="item.file.path"
-      [likemovie]="item.likemovie"
-      [movie_trailer]="item.movie_trailer"
-      [releaseDate]="item.releaseDate"
-      [title]="item.title"
-      [description]="item.description"
-      [views]="item.views"
-      [rating]="item.rating"
-      [genre]="item.genre"
-      [duration]="item.duration"
-    >
-    </app-card>
-  </div>
-</div>
-
-<h2 class="trend-h">Trending Movies</h2>
-<div class="trending-movie">
-  <div *ngFor="let item of filterMovie">
-    <app-card
-      [id]="item.id"
-      [director]="item.director"
-      [dislikemovie]="item.dislikemovie"
-      [movieImage]="item.file.path"
-      [likemovie]="item.likemovie"
-      [movie_trailer]="item.movie_trailer"
-      [releaseDate]="item.releaseDate"
-      [title]="item.title"
-      [description]="item.description"
-      [views]="item.views"
-      [rating]="item.rating"
-      [genre]="item.genre"
-      [duration]="item.duration"
-    >
-    </app-card>
-  </div>
-</div>
-
-<div>
-  <h2 class="trend-h" style="margin-top: 12px; margin-bottom: 12px">Movies</h2>
-  <div class="home">
-    <div *ngFor="let item of movieData">
+<div [hidden]="hidetrend">
+  <h2 class="trend-h">Trending Movies</h2>
+  <div class="trending-movie">
+    <div *ngFor="let item of filterMovie">
       <app-card
         [id]="item.id"
         [director]="item.director"
@@ -208,6 +165,45 @@
       </app-card>
     </div>
   </div>
-  <button class="next" (click)="nextMovie()">Next</button>
-  <button class="prev" (click)="previousMovie()">Previous</button>
 </div>
+  
+
+  @if(error_nomovie){
+
+    <div style="margin-bottom: 50px; display: flex;flex-direction: column;align-items: center;gap: 10px;">
+      <h4 style="color: white; margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">No movie found for this genre</h4>
+          <img src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127823.jpg" alt="Image not found" style="width: 400px; border-radius: 10px;opacity: 90%;" />
+        </div>
+
+  }
+  @else{
+    <div>
+      <h2 class="trend-h" style="margin-top: 12px; margin-bottom: 12px">Movies</h2>
+      <div class="home">
+        <div *ngFor="let item of movieData">
+          <app-card
+            [id]="item.id"
+            [director]="item.director"
+            [dislikemovie]="item.dislikemovie"
+            [movieImage]="item.file.path"
+            [likemovie]="item.likemovie"
+            [movie_trailer]="item.movie_trailer"
+            [releaseDate]="item.releaseDate"
+            [title]="item.title"
+            [description]="item.description"
+            [views]="item.views"
+            [rating]="item.rating"
+            [genre]="item.genre"
+            [duration]="item.duration"
+          >
+          </app-card>
+        </div>
+      </div>
+      <div hidden="ishidden">
+
+    
+      <button class="next" (click)="nextMovie()">Next</button>
+      <button class="prev" (click)="previousMovie()">Previous</button>
+    </div>
+    </div>
+  }

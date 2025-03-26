@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { CommonModule, formatDate } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { HomeService } from './home.service';
 import { DatashareService } from '../datashare.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { Movie } from './movie';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  moviees: Movie[] = [];
+  moviees: Movie[] = [];  
   filterMovie: any;
   filterbyYear: any[] = [];
   value!: number;
@@ -23,7 +23,12 @@ export class HomeComponent {
   allgenre: string[] = [];
   movieData: any;
   sizeCount = 0;
-
+  error_nomovie: boolean = false;
+  searching_movie_data: any;
+  genre!: string;
+  formattedDate!: string;
+  hidetrend:boolean=false;
+  ishidden:boolean=false;
   date1 = new FormControl('');
   date2 = new FormControl('');
 
@@ -39,6 +44,10 @@ export class HomeComponent {
     this.sortMovies();
   }
   ngOnInit() {
+    this.homeService.getData().subscribe((data) => {
+      this.searching_movie_data = data;
+    });
+
     this.homeService.getMovieByPage(this.sizeCount).subscribe((data) => {
       this.movieData = data.content;
       this.filterMovie = data.content.filter((value: { rating: number }) => {
@@ -63,41 +72,52 @@ export class HomeComponent {
         break;
     }
   }
-
-  find(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-  }
   findData() {
-    const value = (document.getElementById('genre') as HTMLInputElement).value;
-    if (this.date1.value && this.date2.value && value) {
+   this.hidetrend=true;
+    const nexButton=document.getElementsByClassName('next')[0] as HTMLButtonElement;
+    this.genre = (document.getElementById('genre') as HTMLInputElement).value;
+    if (this.date1.value && this.date2.value && this.genre) {
       this.homeService
-        .getMovieRelease(this.date1.value!, this.date2.value!)
+        .getMovieByReleaseDateAndGenre(
+          this.date1.value,
+          this.date2.value,
+          this.genre,
+          this.sizeCount
+        )
         .subscribe((data) => {
-          this.filterbyYear = data.filter((item) => item.genre.includes(value));
+    
+        this.movieData = data.content;
+
+        console.log(this.movieData)
+
+        this.movieData.length===0?this.error_nomovie=true:this.error_nomovie=false;
+        this.movieData.length<9?this.ishidden=true:this.ishidden=false;
+        
         });
     } else if (this.date1.value && this.date2.value) {
       this.homeService
-        .getMovieRelease(this.date1.value!, this.date2.value!)
+        .getMovieRelease(this.date1.value!, this.date2.value!, this.sizeCount)
         .subscribe((data) => {
-          this.filterbyYear = data;
-          console.log(data);
+          this.movieData = data.content;
+          console.log(data.content);
         });
-    } else if (value) {
-      this.filterbyYear = this.movieData.filter((data: any) => {
-        return data.genre.includes(value);
-      });
-
-      console.log(this.filterbyYear);
+    } else if (this.genre) {
+      this.homeService
+        .filterByGenre(this.genre, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+        });
     } else if (this.date1.value) {
       const currentDate = new Date();
       const day = currentDate.getDate().toString().padStart(2, '0');
       const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
       const year = currentDate.getFullYear().toString().slice(-2);
-      const formattedDate = `${day}/${month}/${year}`;
+      this.formattedDate = `${day}/${month}/${year}`;
       this.homeService
-        .getMovieRelease(this.date1.value, formattedDate)
+        .getMovieRelease(this.date1.value, this.formattedDate, this.sizeCount)
         .subscribe((data) => {
-          this.filterbyYear = data;
+          this.movieData = data.content;
+          console.log(data.content);
         });
     }
   }
@@ -110,34 +130,107 @@ export class HomeComponent {
     d1.value = '';
   }
   cancelD2() {
-    console.log('invocked');
     const d2 = document.getElementsByName('date2')[0] as HTMLInputElement;
     d2.value = '';
   }
+
   nextMovie() {
-    const prevButton = document.getElementsByClassName(
-      'prev'
-    )[0] as HTMLButtonElement;
+   
+    const prevButton = document.getElementsByClassName('prev')[0] as HTMLButtonElement;
     this.sizeCount = this.sizeCount + 1;
-    this.homeService.getMovieByPage(this.sizeCount).subscribe((data) => {
-      this.movieData = data.content;
-      console.log(this.movieData);
-      if (this.sizeCount > 0) {
-        prevButton.style.visibility = 'visible';
-      }
-    });
+    if (this.genre) {
+      this.homeService
+        .filterByGenre(this.genre, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          
+          if (this.sizeCount > 0) prevButton.style.visibility = 'visible';
+        });
+    } else if (this.date1.value) {
+      this.homeService
+        .getMovieRelease(this.date1.value, this.formattedDate, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          if (this.sizeCount > 0) prevButton.style.visibility = 'visible';
+        });
+    } else if (this.date1.value && this.date2.value) {
+      this.homeService
+        .getMovieRelease(this.date1.value!, this.date2.value!, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          console.log(data.content);
+          if (this.sizeCount > 0) prevButton.style.visibility = 'visible';
+        });
+    } else if (this.date1.value && this.date2.value && this.genre) {
+      this.homeService
+        .getMovieByReleaseDateAndGenre(
+          this.date1.value,
+          this.date2.value,
+          this.genre,
+          this.sizeCount
+        )
+        .subscribe((data) => {
+          this.movieData = data.content;
+          if (this.sizeCount > 0) prevButton.style.visibility = 'visible';
+        });
+    } else {
+      this.homeService.getMovieByPage(this.sizeCount).subscribe((data) => {
+        this.movieData = data.content;
+        if (this.sizeCount > 0) {
+          prevButton.style.visibility = 'visible';
+        }
+      });
+    }
   }
+
   previousMovie() {
     const prevButton = document.getElementsByClassName(
       'prev'
     )[0] as HTMLButtonElement;
     this.sizeCount = this.sizeCount - 1;
-    this.homeService.getMovieByPage(this.sizeCount).subscribe((data) => {
-      this.movieData = data.content;
-      console.log(this.movieData);
-      if (this.sizeCount == 0) {
-        prevButton.style.visibility = 'hidden';
-      }
-    });
+    if (this.genre) {
+      this.homeService
+        .filterByGenre(this.genre, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          if (this.sizeCount == 0) prevButton.style.visibility = 'hidden';
+        });
+    } else if (this.date1.value) {
+      this.homeService
+        .getMovieRelease(this.date1.value, this.formattedDate, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          console.log(data.content);
+          if (this.sizeCount == 0) prevButton.style.visibility = 'hidden';
+        });
+    } else if (this.date1.value && this.date2.value) {
+      this.homeService
+        .getMovieRelease(this.date1.value!, this.date2.value!, this.sizeCount)
+        .subscribe((data) => {
+          this.movieData = data.content;
+          console.log(data.content);
+          if (this.sizeCount == 0) prevButton.style.visibility = 'hidden';
+        });
+    } else if (this.date1.value && this.date2.value && this.genre) {
+      this.homeService
+        .getMovieByReleaseDateAndGenre(
+          this.date1.value,
+          this.date2.value,
+          this.genre,
+          this.sizeCount
+        )
+        .subscribe((data) => {
+          this.movieData = data.content;
+          console.log(this.movieData.length)
+          if (this.sizeCount == 0) prevButton.style.visibility = 'hidden';
+        });
+    } else {
+      this.homeService.getMovieByPage(this.sizeCount).subscribe((data) => {
+        this.movieData = data.content;
+        if (this.sizeCount == 0) {
+          prevButton.style.visibility = 'hidden';
+        }
+      });
+    }
   }
 }
