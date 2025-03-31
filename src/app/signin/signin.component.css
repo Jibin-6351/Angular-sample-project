@@ -1,0 +1,16 @@
+.inp {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #956643;
+    background: transparent;
+    outline: none;
+    color: white;
+    width: 350px;
+  }
+
+  ::placeholder {
+    color: white;
+  }
+  #btn:hover {
+    opacity: 80%;
+  }

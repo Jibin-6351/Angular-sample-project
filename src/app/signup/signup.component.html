@@ -1,0 +1,128 @@
+<div
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 88vh;
+  "
+>
+<h2 style="color: white; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-style: italic;">Signin</h2>
+
+  <form
+    [formGroup]="signupForm"
+    (submit)="onSubmit()"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #3e3c3b;
+      padding: 30px;
+      border-radius: 12px;
+    "
+  >
+    <div class="sub-1">
+      <input
+        type="text"
+        placeholder="Firstname"
+        class="inp"
+        formControlName="firstName"
+      />
+      <input
+        type="text"
+        placeholder="Lastname"
+        class="inp"
+        formControlName="lastName"
+      />
+    </div>
+    <div class="sub-1">
+      <select
+        style="width: 60%; text-align: center"
+        class="inp"
+        formControlName="countryCode"
+      >
+      <option value="">Countrycode</option>
+        <option value="+91" style="color: white; background-color: black">
+          +91
+        </option>
+        <option value="+21" style="color: white; background-color: black">
+          +21
+        </option>
+        <option value="+23" style="color: white; background-color: black">
+          +23
+        </option>
+      </select>
+
+      <input
+        type="number"
+        placeholder="Phonenumber"
+        class="inp"
+        style="width: 100%"
+        formControlName="mobileNumber"
+      />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 5px">
+      <p style="color: white; margin: 0; font-size: 15px; font-weight: 500">
+        Enter your date of birth
+      </p>
+      <div class="sub-1">
+        <div
+          style="
+            border: 1px solid #956643;
+            border-radius: 6px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+          "
+        >
+          <input
+            type="date"
+            value="+91"
+            class="inp"
+            style="width: 100%; outline: none; border: none"
+            formControlName="dob"
+          />
+          <i class="fa fa-times" style="color: red; cursor: pointer"></i>
+        </div>
+        <select
+          style="width: 40%; padding: 10px; border-radius: 8px"
+          class="inp"
+          formControlName="gender"
+        >
+          <option value="" style="background-color: black">Gender</option>
+          <option value="Male" style="background-color: black">Male</option>
+          <option value="Female" style="background-color: black">Female</option>
+        </select>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <input
+        type="email"
+        name=""
+        class="inp"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <input
+        type="password"
+        name=""
+        class="inp"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <button class="inp" style="font-weight: 500; font-style: italic;background-color: #956643;" id="btn">
+        Signup
+      </button>
+    </div>
+
+    <div style="display: flex; gap: 4px;">
+      <p style="color: white; margin: 0">Already have an account ?</p>
+      <span
+        style="color: #305cde; margin: 0; cursor: pointer"
+        (click)="navigate()"
+        >Signin</span
+      >
+    </div>
+  </form>
+</div>

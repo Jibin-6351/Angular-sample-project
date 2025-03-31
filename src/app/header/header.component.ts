@@ -70,4 +70,7 @@ export class HeaderComponent {
 
     this.router.navigate(['/movies', id[0].id]);
   }
+  navigate(){
+    this.router.navigate(['/signup'])
+  }
 }

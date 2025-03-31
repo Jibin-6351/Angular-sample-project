@@ -64,6 +64,7 @@
           class="filter"
           [formControl]="date2"
           style="border: none"
+          
         />
         <i
           class="fa fa-times"
@@ -199,11 +200,9 @@
           </app-card>
         </div>
       </div>
-      <div hidden="ishidden">
-
-    
-      <button class="next" (click)="nextMovie()">Next</button>
+      
+      <button class="next" (click)="nextMovie()" [hidden]="ishidden">Next</button>
       <button class="prev" (click)="previousMovie()">Previous</button>
-    </div>
+   
     </div>
   }
