@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'addmovie', component: AddmovieComponent },
-  { path: 'movies/:id', component: CarddetailsComponent },
+  { path: 'movies/:id', component: CarddetailsComponent},
   { path: 'signup', component: SignupComponent },
-  { path: 'signin', component: SigninComponent }
+  { path: 'signin', component: SigninComponent },
 ];

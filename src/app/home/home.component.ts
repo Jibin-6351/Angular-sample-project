@@ -5,7 +5,6 @@ import { HomeService } from './home.service';
 import { DatashareService } from '../datashare.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Movie } from './movie';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +14,8 @@ import { Movie } from './movie';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  moviees: Movie[] = [];
   filterMovie: any;
-  filterbyYear: any[] = [];
-  value!: number;
   filter!: boolean;
-  allgenre: string[] = [];
   movieData: any;
   sizeCount = 0;
   error_nomovie: boolean = false;
@@ -38,11 +33,6 @@ export class HomeComponent {
     private router: Router
   ) {}
 
-  changeValue(event: Event) {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.value = parseInt(selectedValue);
-    this.sortMovies();
-  }
   ngOnInit() {
     this.homeService.getData().subscribe((data) => {
       this.searching_movie_data = data;
@@ -57,27 +47,14 @@ export class HomeComponent {
         return value.rating >= 9.0;
       });
     });
+
     this.dataShare.btnValue$.subscribe((currentValue) => {
       this.filter = currentValue;
     });
   }
-  sortMovies() {
-    switch (this.value) {
-      case 1:
-        this.moviees.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case 2:
-        this.moviees.sort((a, b) => {
-          const dateA = new Date(a.releaseDate);
-          const dateB = new Date(b.releaseDate);
-          return dateA.getTime() - dateB.getTime();
-        });
-        break;
-    }
-  }
+
   findData() {
     this.hidetrend = true;
-
     this.genre = (document.getElementById('genre') as HTMLInputElement).value;
     if (this.date1.value && this.date2.value && this.genre) {
       this.homeService

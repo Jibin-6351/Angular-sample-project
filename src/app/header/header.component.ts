@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from './header.service';
 import { FormsModule } from '@angular/forms';
-import {
-  AutoCompleteCompleteEvent,
-  AutoCompleteModule,
-} from 'primeng/autocomplete';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 import { DatashareService } from '../datashare.service';
+import { AuthServiceService } from '../auth-service.service';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +17,8 @@ import { DatashareService } from '../datashare.service';
     AutoCompleteModule,
     FormsModule,
     AutocompleteComponent,
+    DropdownComponent,
+    RouterModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -25,7 +27,8 @@ export class HeaderComponent {
   constructor(
     private apiService: ApiService,
     private router: Router,
-    private dataShare: DatashareService
+    private dataShare: DatashareService,
+    private authService: AuthServiceService
   ) {}
 
   movieName!: any[];
@@ -38,6 +41,8 @@ export class HeaderComponent {
 
   buttonChange: boolean = true;
 
+  profile_icon = false;
+
   change() {
     if (this.buttonChange) {
       this.dataShare.changeValue(true);
@@ -49,6 +54,7 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
+    this.profile_icon = this.authService.isAuthenticated();
     this.apiService.getData().subscribe((data) => {
       (this.allMovie = data),
         (this.movieName = data.map((value: { title: any }) => value.title));
@@ -70,7 +76,18 @@ export class HeaderComponent {
 
     this.router.navigate(['/movies', id[0].id]);
   }
-  navigate(){
-    this.router.navigate(['/signup'])
+  navigate() {
+    this.router.navigate(['/signup']);
+  }
+
+  addmovie() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/addmovie']);
+    } else {
+      this.router.navigate(['/signin']);
+    }
+  }
+  navigateProfile() {
+    this.router.navigate(['/profile']);
   }
 }

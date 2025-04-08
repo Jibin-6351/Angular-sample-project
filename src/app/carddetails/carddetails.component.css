@@ -8,6 +8,7 @@
 .movie-main {
   display: flex;
   padding: 28px;
+  padding-bottom: 55px;
 }
 
 .movie-1 {

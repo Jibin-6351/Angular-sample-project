@@ -1,17 +1,14 @@
-.container{
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    align-items: center;
-    gap: 10px;
+.no-caret::after {
+    display: none !important;
 }
-.btn{
-   padding: 8px;
-   background-color: rgb(86, 86, 194);
-   color :white;
+.dropdown-menu {
+    background-color: black !important;
 }
-.range{
-    display: flex; 
-    gap: 10px;
+
+.dropdown-menu button {
+    color: white !important;
+}
+
+.dropdown-menu button:hover {
+    background-color: #333 !important; 
 }

@@ -1,26 +1,9 @@
 @if(filter){
 <div class="trending-main">
-  <div style="display: flex; gap: 10px; align-items: flex-end">
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-direction: column;
-      "
-    >
-      <label style="color: white">From Date</label>
-      <div
-        style="
-          display: flex;
-          gap: 8px;
-          cursor: pointer;
-          align-items: center;
-          border: 1px solid white;
-          width: 230px;
-          border-radius: 10px;
-        "
-      >
+  <div class="filter-main-div">
+    <div class="filter-sub">
+      <label class="filter-label">From Date</label>
+      <div class="filter-date-div">
         <input
           type="date"
           name="date1"
@@ -32,31 +15,14 @@
         <i
           class="fa fa-times"
           aria-hidden="true"
-          style="color: red; text-align: right"
+          id="filter-date-cancel"
           (click)="cancelD1()"
         ></i>
       </div>
     </div>
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-direction: column;
-      "
-    >
-      <label style="color: white">To Date</label>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          cursor: pointer;
-          border: 1px solid white;
-          width: 230px;
-          border-radius: 10px;
-        "
-      >
+    <div class="filter-date-icon">
+      <label class="filter-label">To Date</label>
+      <div class="filter-date-div">
         <input
           type="date"
           name="date2"
@@ -64,82 +30,42 @@
           class="filter"
           [formControl]="date2"
           style="border: none"
-          
         />
         <i
           class="fa fa-times"
           aria-hidden="true"
-          style="color: red; text-align: right"
+          id="filter-date-cancel"
           (click)="cancelD2()"
         ></i>
       </div>
     </div>
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-direction: column;
-      "
-    >
-      <select name="" id="" class="filter" style="padding: 7px" id="genre">
-        <option value="" style="background-color: black">Select Genre</option>
-        <option value="COMEDY" style="background-color: black">COMEDY</option>
-        <option value="ACTION" style="background-color: black">ACTION</option>
-        <option value="FICTION" style="background-color: black">FICTION</option>
-        <option value="HORROR" style="background-color: black">HORROR</option>
-        <option value="DRAMA" style="background-color: black">DRAMA</option>
-        <option value="ADVENTURE" style="background-color: black">
-          ADVENTURE
-        </option>
-        <option value="ANIMATION" style="background-color: black">
-          ANIMATION
-        </option>
-        <option value="BIOGRAPHY" style="background-color: black">
-          BIOGRAPHY
-        </option>
-        <option value="CRIME" style="background-color: black">FAMILY</option>
-        <option value="FANTASY" style="background-color: black">FANTASY</option>
-        <option value="FILM_NOIR" style="background-color: black">
-          FILM_NOIR
-        </option>
-        <option value="HISTORY" style="background-color: black">HISTORY</option>
-        <option value="MUSICAL" style="background-color: black">MUSICAL</option>
-        <option value="MYSTERY" style="background-color: black">MYSTERY</option>
-        <option value="ROMANCE" style="background-color: black">ROMANCE</option>
-        <option value="SCI_FI" style="background-color: black">SCI_FI</option>
-        <option value="WAR" style="background-color: black">WAR</option>
-        <option value="THRILLER" style="background-color: black">
-          THRILLER
-        </option>
-        <option value="SPORT" style="background-color: black">SPORT</option>
-        <option value="WESTERN" style="background-color: black">WESTERN</option>
+    <div class="filter-date-wrapperdiv">
+      <select name="" id="" class="filter-selectbox" id="genre">
+        <option value="" class="fiter-option">Select Genre</option>
+        <option value="COMEDY" class="fiter-option">COMEDY</option>
+        <option value="ACTION" class="fiter-option">ACTION</option>
+        <option value="FICTION" class="fiter-option">FICTION</option>
+        <option value="HORROR" class="fiter-option">HORROR</option>
+        <option value="DRAMA" class="fiter-option">DRAMA</option>
+        <option value="ADVENTURE" class="fiter-option">ADVENTURE</option>
+        <option value="ANIMATION" class="fiter-option">ANIMATION</option>
+        <option value="BIOGRAPHY" class="fiter-option">BIOGRAPHY</option>
+        <option value="CRIME" class="fiter-option">FAMILY</option>
+        <option value="FANTASY" class="fiter-option">FANTASY</option>
+        <option value="FILM_NOIR" class="fiter-option">FILM_NOIR</option>
+        <option value="HISTORY" class="fiter-option">HISTORY</option>
+        <option value="MUSICAL" class="fiter-option">MUSICAL</option>
+        <option value="MYSTERY" class="fiter-option">MYSTERY</option>
+        <option value="ROMANCE" class="fiter-option">ROMANCE</option>
+        <option value="SCI_FI" class="fiter-option">SCI_FI</option>
+        <option value="WAR" class="fiter-option">WAR</option>
+        <option value="THRILLER" class="fiter-option">THRILLER</option>
+        <option value="SPORT" class="fiter-option">SPORT</option>
+        <option value="WESTERN" class="fiter-option">WESTERN</option>
       </select>
     </div>
-    <button
-      style="
-        outline: none;
-        border: none;
-        padding: 4px;
-        border-radius: 10px;
-        width: 100px;
-      "
-      (click)="findData()"
-    >
-      Filter
-    </button>
+    <button class="filter-btn" (click)="findData()">Filter</button>
   </div>
-  <select
-    name=""
-    id=""
-    class="sortbtn"
-    (change)="changeValue($event)"
-    style="display: none"
-  >
-    <option value="0">Sort</option>
-    <option value="1">Sort by Name</option>
-    <option value="2">Sort by Year</option>
-  </select>
 </div>
 
 }
@@ -167,42 +93,43 @@
     </div>
   </div>
 </div>
-  
 
-  @if(error_nomovie){
+@if(error_nomovie){
 
-    <div style="margin-bottom: 50px; display: flex;flex-direction: column;align-items: center;gap: 10px;">
-      <h4 style="color: white; margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">No movie found for this genre</h4>
-          <img src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127823.jpg" alt="Image not found" style="width: 400px; border-radius: 10px;opacity: 90%;" />
-        </div>
+<div class="movie-notfount-div">
+  <h4 class="movie-notfount-h">No movie found for this genre</h4>
+  <img
+    src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127823.jpg"
+    alt="Image not found"
+    class="movie-notfount-img"
+  />
+</div>
 
-  }
-  @else{
-    <div>
-      <h2 class="trend-h" style="margin-top: 12px; margin-bottom: 12px">Movies</h2>
-      <div class="home">
-        <div *ngFor="let item of movieData">
-          <app-card
-            [id]="item.id"
-            [director]="item.director"
-            [dislikemovie]="item.dislikemovie"
-            [movieImage]="item.file.path"
-            [likemovie]="item.likemovie"
-            [movie_trailer]="item.movie_trailer"
-            [releaseDate]="item.releaseDate"
-            [title]="item.title"
-            [description]="item.description"
-            [views]="item.views"
-            [rating]="item.rating"
-            [genre]="item.genre"
-            [duration]="item.duration"
-          >
-          </app-card>
-        </div>
-      </div>
-      
-      <button class="next" (click)="nextMovie()" [hidden]="ishidden">Next</button>
-      <button class="prev" (click)="previousMovie()">Previous</button>
-   
+} @else{
+<div>
+  <h2 class="allmovie-h">Movies</h2>
+  <div class="home">
+    <div *ngFor="let item of movieData">
+      <app-card
+        [id]="item.id"
+        [director]="item.director"
+        [dislikemovie]="item.dislikemovie"
+        [movieImage]="item.file.path"
+        [likemovie]="item.likemovie"
+        [movie_trailer]="item.movie_trailer"
+        [releaseDate]="item.releaseDate"
+        [title]="item.title"
+        [description]="item.description"
+        [views]="item.views"
+        [rating]="item.rating"
+        [genre]="item.genre"
+        [duration]="item.duration"
+      >
+      </app-card>
     </div>
-  }
+  </div>
+
+  <button class="next" (click)="nextMovie()" [hidden]="ishidden">Next</button>
+  <button class="prev" (click)="previousMovie()">Previous</button>
+</div>
+}

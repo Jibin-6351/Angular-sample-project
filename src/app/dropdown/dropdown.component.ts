@@ -1,49 +1,29 @@
 import { Component } from '@angular/core';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { LogoutComponent } from './dropdown.service';
+import { AuthServiceService } from '../auth-service.service';
 
 @Component({
   selector: 'app-dropdown',
-  imports: [],
+  imports: [NgbDropdownModule],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.css'
+  styleUrl: './dropdown.component.css',
 })
-
-
-
 export class DropdownComponent {
-
-  a:boolean=false;
-
-  
-  showMovie(event:Event){
-    let range=(event.target as HTMLInputElement).value
-    console.log("Range 2024 to "+range)
+  constructor(
+    private logoutService: LogoutComponent,
+    private authService: AuthServiceService
+  ) {}
+  Logout() {
+    this.logoutService.getData().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.authService.logout();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    console.log('clicked');
   }
-
-
-
-  show(){
-    
-      console.log("clicked "+this.a)
-      if(this.a){
-
-        const divrange= document.getElementsByClassName(
-          'range'
-        )[0] as HTMLButtonElement;
-        divrange.style.display='block'
-        this.a=false
-      }else{
-        const divrange= document.getElementsByClassName(
-          'range'
-        )[0] as HTMLButtonElement;
-        divrange.style.display='none'
-        this.a=true
-      }
-    
-    }
-    
-  
-  
-
-
-
 }

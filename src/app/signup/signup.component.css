@@ -28,3 +28,120 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.signup-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 88vh;
+}
+.signup-h {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #3e3c3b;
+  padding: 30px;
+  border-radius: 12px;
+}
+.signup-selectbox {
+  width: 60%;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+.signup-option {
+  color: white;
+  background-color: black;
+}
+.signup-number {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+  width: 100%;
+}
+.signup-part1 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signup-dob {
+  color: white;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.signup-dob-div {
+  border: 1px solid #956643;
+  border-radius: 6px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+.signup-date {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+#signup-dob-cancel {
+  color: red;
+  cursor: pointer;
+}
+.signup-gender-selectbox {
+  width: 40%;
+  padding: 10px;
+  border-radius: 8p;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+.signup-email-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signup-btn {
+  font-weight: 500;
+  font-style: italic;
+  background-color: #956643;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+.signup-part2 {
+  display: flex;
+  gap: 4px;
+}
+.signup-p {
+  color: white;
+  margin: 0;
+}
+.signin-link {
+  color: #305cde;
+  margin: 0;
+  cursor: pointer;
+}

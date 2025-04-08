@@ -1,16 +1,60 @@
 .inp {
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #956643;
-    background: transparent;
-    outline: none;
-    color: white;
-    width: 350px;
-  }
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+  width: 350px;
+}
 
-  ::placeholder {
-    color: white;
-  }
-  #btn:hover {
-    opacity: 80%;
-  }
+::placeholder {
+  color: white;
+}
+#btn:hover {
+  opacity: 80%;
+}
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 88vh;
+  padding-bottom: 7%;
+}
+.signin-h {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 35px;
+  background-color: #3e3c3b;
+  border-radius: 12px;
+}
+.signin-btn {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #956643;
+  background: transparent;
+  outline: none;
+  color: white;
+  width: 350px;
+  background-color: #956643;
+}
+.signin-ques-div {
+  display: flex;
+  gap: 4px;
+}
+.signin-p {
+  margin: 0;
+  color: white;
+}
+.signin-link {
+  color: #305cde;
+  cursor: pointer;
+}

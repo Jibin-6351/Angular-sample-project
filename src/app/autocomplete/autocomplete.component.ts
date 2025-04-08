@@ -29,7 +29,6 @@ export class AutocompleteComponent {
   ngOnInit() {
     this.homeService.getData().subscribe((data) => {
       this.autoComplete = data;
-
       this.names = this.autoComplete.map(
         (data: { id: any; title: any; file: { path: any } }) => {
           return { id: data.id, name: data.title, path: data.file.path };
@@ -37,12 +36,12 @@ export class AutocompleteComponent {
       );
 
       this.allMovie = data;
-    });
+    }
+  )
   }
 
   onModelChange(newValue: any): void {
     const id = this.allMovie.find((movie) => movie.id == newValue.id);
-    console.log(id);
     this.router.navigate(['/movies', id.id]);
   }
 

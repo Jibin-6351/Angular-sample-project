@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignupService } from './signup.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { SignupService } from './signup.service';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor(private router: Router, private signupService: SignupService) {}
+  constructor(private router: Router, private signupService: SignupService,private toastr: ToastrService) {}
 
   signupForm = new FormGroup({
     firstName: new FormControl(''),
@@ -29,7 +30,7 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.isAnyFieldEmpty()) {
-      alert('Please fill all the fields!');
+      this.toastr.error('Please fill all the fields!')
     } else {
       this.signupService.onPost(this.signupForm.value).subscribe((data) => {
         if (data.message == 'success') {
@@ -45,5 +46,10 @@ export class SignupComponent {
         value === null || value === undefined || value.toString().trim() === ''
       );
     });
+  }
+  clear(){
+    const d1 = document.getElementsByClassName('signup-date')[0] as HTMLInputElement;
+    d1.value = '';
+    this.signupForm.controls['dob'].reset()
   }
 }
