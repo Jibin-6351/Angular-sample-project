@@ -7,7 +7,12 @@ import { ToastrModule } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ToastrModule],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    ToastrModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

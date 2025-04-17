@@ -67,8 +67,6 @@ export class HomeComponent {
         .subscribe((data) => {
           this.movieData = data.content;
 
-          console.log(this.movieData);
-
           this.movieData.length === 0
             ? (this.error_nomovie = true)
             : (this.error_nomovie = false);

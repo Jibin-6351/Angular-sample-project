@@ -5,10 +5,10 @@ import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServiceService {
+export class AuthService {
   constructor(private router: Router) {}
 
-  token: string | null=null;
+  token: string | null = null;
   setToken(token: string): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('accessToken', token);
@@ -27,7 +27,7 @@ export class AuthServiceService {
   logout(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('accessToken');
-      location.replace("/")
+      location.replace('/');
     }
   }
 
@@ -44,5 +44,16 @@ export class AuthServiceService {
     } catch (error) {
       return false;
     }
+  }
+
+  getUser(): string {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        const decodedToken: any = jwtDecode(token);
+        return decodedToken.sub;
+      }
+    }
+    throw new Error('Access token not found or invalid');
   }
 }

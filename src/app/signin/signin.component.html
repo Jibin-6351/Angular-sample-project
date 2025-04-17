@@ -1,6 +1,62 @@
 <div class="main">
   <h2 class="signin-h">Signin</h2>
   <form [formGroup]="signinForm" (submit)="onSubmit()" class="signin-form">
+    <div style="display: flex; gap: 10px">
+      <div
+        class="inp"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          width: 50%;
+          cursor: pointer;
+        "
+        (click)="googleLogin()"
+      >
+        <p style="margin: 0px; font-size: large">
+          <i class="fa fa-google" aria-hidden="true"></i>
+        </p>
+        <p style="margin: 0px; font-size: small">Google</p>
+      </div>
+
+      <div
+        class="inp"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          width: 50%;
+          cursor: pointer;
+        "
+        (click)="githubLogin()"
+      >
+        <p style="margin: 0px; font-size: large">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </p>
+        <p style="margin: 0px; font-size: small">Github</p>
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+      "
+    >
+      <hr
+        style="color: white; border-width: 3px; width: 30%; text-align: right"
+      />
+      <span style="color: white">or</span>
+      <hr
+        style="color: white; border-width: 3px; width: 30%; text-align: right"
+      />
+    </div>
+
     <input
       type="email"
       class="inp"
@@ -13,6 +69,7 @@
       placeholder="Password"
       formControlName="password"
     />
+    <p class="signin-forgotpassword">Forgot Password</p>
     <button class="signin-btn" id="btn">Signin</button>
     <div class="signin-ques-div">
       <p class="signin-p">Don't have an account ?</p>

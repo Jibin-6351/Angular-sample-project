@@ -1,12 +1,31 @@
-<div class="btn-group me-3" style="background-color: white;">
-	<div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown" style="background-color: white;">
-		<button type="button" class="btn no-caret" ngbDropdownToggle style="background: none; border: none; padding: 0;">
-			<img style="width: 42px; height: 42px; border-radius: 18px; cursor: pointer;" 
-				src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_hybrid" 
-				alt="User Profile">
-		</button>
-		<div class="dropdown-menu" ngbDropdownMenu style="background-color: black;">
-			<button ngbDropdownItem style="color: white;" (click)="Logout()">Logout</button>
-		</div>
-	</div>
+<div class="btn-group me-3" style="background-color: white">
+  <div
+    class="btn-group"
+    ngbDropdown
+    role="group"
+    aria-label="Button group with nested dropdown"
+    style="background-color: white"
+  >
+    <button
+      type="button"
+      class="btn no-caret"
+      ngbDropdownToggle
+      style="background: none; border: none; padding: 0"
+    >
+      <img
+        style="width: 42px; height: 42px; border-radius: 18px; cursor: pointer"
+        src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_hybrid"
+        alt="User Profile"
+      />
+    </button>
+    <div class="dropdown-menu" ngbDropdownMenu style="background-color: black">
+      <button ngbDropdownItem style="color: white" (click)="navigate()">
+        Profile
+      </button>
+      <button ngbDropdownItem style="color: white" (click)="Logout()">
+        Logout
+      </button>
+    </div>
+  </div>
 </div>
+

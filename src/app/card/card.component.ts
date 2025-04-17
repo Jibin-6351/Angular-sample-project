@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from './card.service';
-import { AuthServiceService } from '../auth-service.service';
+import { AuthService } from '../auth-service.service';
 
 @Component({
   selector: 'app-card',
@@ -13,7 +13,7 @@ export class CardComponent {
   constructor(
     private router: Router,
     private movieService: MovieService,
-    private authService: AuthServiceService
+    private authService: AuthService
   ) {}
 
   @Input() id!: number;

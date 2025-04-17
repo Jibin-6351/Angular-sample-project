@@ -20,7 +20,8 @@
   flex-direction: column;
   justify-content: center;
   height: 88vh;
-  padding-bottom: 7%;
+  margin-top: 30px;
+  padding-bottom: 6%;
 }
 .signin-h {
   color: white;
@@ -38,7 +39,7 @@
 }
 .signin-btn {
   padding: 8px;
-  border-radius: 6px;
+  border-radius: 20px;
   border: 1px solid #956643;
   background: transparent;
   outline: none;
@@ -53,8 +54,25 @@
 .signin-p {
   margin: 0;
   color: white;
+  font-size: 15px;
 }
 .signin-link {
   color: #305cde;
   cursor: pointer;
+  font-size: 15px;
+}
+.signin-forgotpassword {
+  color: #305cde;
+  margin: 0px;
+  text-align: right;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.signin-forgotpassword:hover {
+  opacity: 80%;
+}
+.signin-link:hover {
+  opacity: 80%;
 }

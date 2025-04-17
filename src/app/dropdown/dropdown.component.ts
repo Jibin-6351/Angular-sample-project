@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './dropdown.service';
-import { AuthServiceService } from '../auth-service.service';
+import { AuthService } from '../auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dropdown',
@@ -12,7 +13,8 @@ import { AuthServiceService } from '../auth-service.service';
 export class DropdownComponent {
   constructor(
     private logoutService: LogoutComponent,
-    private authService: AuthServiceService
+    private authService: AuthService,
+    private router:Router
   ) {}
   Logout() {
     this.logoutService.getData().subscribe({
@@ -24,6 +26,8 @@ export class DropdownComponent {
         console.log(error);
       },
     });
-    console.log('clicked');
+  }
+  navigate(){
+this.router.navigate(['/profile'])
   }
 }

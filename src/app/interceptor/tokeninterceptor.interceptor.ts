@@ -1,9 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { Router } from '@angular/router';
 
 export const tokeninterceptorInterceptor: HttpInterceptorFn = (req, next) => {
-  const router = inject(Router);
   let token;
 
   if (typeof window !== 'undefined' && window.localStorage) {
@@ -11,6 +8,7 @@ export const tokeninterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   }
   const newRequest = req.clone({
     setHeaders: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   });

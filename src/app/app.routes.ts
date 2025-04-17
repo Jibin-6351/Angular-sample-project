@@ -5,6 +5,7 @@ import { AddmovieComponent } from './addmovie/addmovie.component';
 import { CarddetailsComponent } from './carddetails/carddetails.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'movies/:id', component: CarddetailsComponent},
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'profile', component: ProfileComponent },
 ];

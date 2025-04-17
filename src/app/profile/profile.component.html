@@ -1,0 +1,49 @@
+<div class="profile-main">
+  <div class="profile-sub">
+    <div class="profile-div-1">
+      <img
+        class="profile-img"
+        src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_hybrid"
+        alt=""
+        srcset=""
+      />
+      <h5 class="profile-name">{{ data?.firstName }}</h5>
+      <ngbd-modal-component></ngbd-modal-component>
+    </div>
+    <div class="profile-div-2">
+      <!-- <h5 class="details-h">Details</h5> -->
+
+      <table>
+        <tbody>
+          <tr>
+            <td>FirstName</td>
+            <td>{{ data?.firstName }}</td>
+          </tr>
+          <tr>
+            <td>LastName</td>
+            <td>{{ data?.lastName }}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>{{ data?.gender }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ data?.email }}</td>
+          </tr>
+          <tr>
+            <td>PhoneNumber</td>
+            <td>{{ data?.mobileNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <div class="profile-update">
+        <p>Edit Profile</p>
+        <p><i class="fa fa-pencil-square" aria-hidden="true"></i></p>
+
+      </div>
+    </div>
+  </div>
+</div>

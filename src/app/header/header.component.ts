@@ -6,7 +6,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 import { DatashareService } from '../datashare.service';
-import { AuthServiceService } from '../auth-service.service';
+import { AuthService } from '../auth-service.service';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { RouterModule } from '@angular/router';
 
@@ -28,7 +28,7 @@ export class HeaderComponent {
     private apiService: ApiService,
     private router: Router,
     private dataShare: DatashareService,
-    private authService: AuthServiceService
+    private authService: AuthService
   ) {}
 
   movieName!: any[];
@@ -77,7 +77,7 @@ export class HeaderComponent {
     this.router.navigate(['/movies', id[0].id]);
   }
   navigate() {
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/signin']);
   }
 
   addmovie() {

@@ -1,0 +1,66 @@
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  height: 100vh;
+}
+.profile-div-1 {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.profile-name {
+  color: white;
+}
+.profile-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 23px;
+}
+.profile-sub {
+  display: flex;
+  padding: 40px;
+  background-color: #3f3d3b;
+  border-radius: 12px;
+  gap: 20px;
+}
+.details-h {
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+tr,
+td {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 15px;
+  padding-left: 60px;
+}
+.profile-label-div {
+  display: flex;
+  gap: 50px;
+}
+.profile-div-2 {
+  padding: 30px;
+}
+.profile-update {
+  display: flex;
+  gap: 10px;
+  padding: 9px;
+  background-color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+p {
+  margin: 0;
+}
+.profile-change-password {
+  color: #305cde;
+}
